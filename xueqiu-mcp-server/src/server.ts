@@ -33,7 +33,7 @@ const mcp = new McpServer({ name: 'xueqiu-mcp', version: '0.1.0' }, {})
 mcp.registerTool(
   'ping',
   { description: '健康检查与鉴权状态', inputSchema: pingInput, outputSchema: pingOutput },
-  async () => ({ content: [], structuredContent: { status: 'ok', auth: hasAuth() } })
+  async () => ({ content: [{ type: 'text', text: `ok auth=${hasAuth()}` }], structuredContent: { status: 'ok', auth: hasAuth() } })
 )
 
 mcp.registerTool(
@@ -45,7 +45,7 @@ mcp.registerTool(
       client.updateCookies(c)
     })
     const result = await handler(args)
-    return { content: [], structuredContent: result }
+    return { content: [{ type: 'text', text: `updated=${result.updated}` }], structuredContent: result }
   }
 )
 

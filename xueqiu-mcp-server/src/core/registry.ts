@@ -14,6 +14,14 @@ export function registerStructuredTool(
 ) {
   mcp.registerTool(name, { description: desc, inputSchema, outputSchema }, async (args: any) => {
     const data = await run(args)
-    return { content: [], structuredContent: data }
+    const text = (() => {
+      try {
+        const s = JSON.stringify(data)
+        return s.length > 500 ? s.slice(0, 500) + '…' : s
+      } catch {
+        return name + ' ok'
+      }
+    })()
+    return { content: [{ type: 'text' as const, text }], structuredContent: data }
   })
 }
