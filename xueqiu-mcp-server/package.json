@@ -10,11 +10,15 @@
     "test": "vitest",
     "examples:quotes": "node examples/check-quotes.js",
     "examples:minute": "node examples/check-minute.js",
-    "examples:capital": "node examples/check-capital.js"
+    "examples:capital": "node examples/check-capital.js",
+    "examples:kline": "node examples/check-kline.js",
+    "examples:kline:auth": "node examples/check-kline-auth.js",
+    "examples:quotec": "node examples/check-quotec.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
     "axios": "^1.7.4",
+    "cheerio": "^1.0.0-rc.12",
     "pino": "^9.4.0",
     "zod": "^3.23.8"
   },

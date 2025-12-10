@@ -29,7 +29,7 @@ export function createUpdateCookiesTool(apply: (c: XueqiuCookies | undefined) =>
         if (k && v) map[k] = v
       }
       if (map['xq_a_token']) {
-        next = { xq_a_token: map['xq_a_token'] }
+        next = { xq_a_token: map['xq_a_token'], rawCookie: args.cookieHeader }
       }
     }
     if (!next && args?.cookies) next = args.cookies as XueqiuCookies
